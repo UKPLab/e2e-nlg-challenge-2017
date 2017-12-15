@@ -1,0 +1,10 @@
+*.iml
+.idea
+
+**/__pycache__
+*.pyc
+*.pyo
+
+sandbox/
+components/evaluator/input_files/*
+
