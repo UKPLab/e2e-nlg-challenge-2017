@@ -48,27 +48,25 @@ def run(config_dict):
         load_model(model, model_fname)
         id2word = data.vocab.id2tok
 
-        # Note that here we make predictions on dev data.
-        # If you want to run predictions on test data, substitute the following:
-        # 1) data.dev[0] -> data.test[0]
-        # 2) data.lexicalizations['dev'] -> data.lexicalizations['test']
-        logger.info("Predicting on dev data")
-        predicted_ids, attention_weights = evaluator.evaluate_model(model, data.dev[0])
-        data_lexicalizations = data.lexicalizations['dev']
-        predicted_snts = evaluator.lexicalize_predictions(predicted_ids,
-                                                          data_lexicalizations,
-                                                          id2word)
+        if 'dev' in data.fnames:
+            logger.info("Predicting on dev data")
+            predicted_ids, attention_weights = evaluator.evaluate_model(model, data.dev[0])
+            data_lexicalizations = data.lexicalizations['dev']
+            predicted_snts = evaluator.lexicalize_predictions(predicted_ids,
+                                                              data_lexicalizations,
+                                                              id2word)
 
-        save_predictions_txt(predicted_snts, '%s.devset.predictions.txt' % model_fname)
+            save_predictions_txt(predicted_snts, '%s.devset.predictions.txt' % model_fname)
+            
+        if 'test' in data.fnames:
+            logger.info("Predicting on test data")
+            predicted_ids, attention_weights = evaluator.evaluate_model(model, data.test[0])
+            data_lexicalizations = data.lexicalizations['test']
+            predicted_snts = evaluator.lexicalize_predictions(predicted_ids,
+                                                              data_lexicalizations,
+                                                              id2word)
 
-        logger.info("Predicting on test data")
-        predicted_ids, attention_weights = evaluator.evaluate_model(model, data.test[0])
-        data_lexicalizations = data.lexicalizations['test']
-        predicted_snts = evaluator.lexicalize_predictions(predicted_ids,
-                                                          data_lexicalizations,
-                                                          id2word)
-
-        save_predictions_txt(predicted_snts, '%s.testset.predictions.txt' % model_fname)
+            save_predictions_txt(predicted_snts, '%s.testset.predictions.txt' % model_fname)
 
     else:
         logger.warning("Check the 'mode' field in the config file: %s" % mode)
