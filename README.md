@@ -3,7 +3,13 @@
 Please use the following citation:
 
 ```
-TBD
+@misc{puzikov2018_e2e-nlg-challenge,
+ author = {Puzikov, Yevgeniy and Gurevych, Iryna},
+ title = {{E2E} {NLG} Challenge: Neural Networks Vs. Templates},
+ howpublished = {{E2E} {NLG} Challenge System Descriptions},
+ year = 2018,
+ note = {\url{http://www.macs.hw.ac.uk/InteractionLab/E2E/#papers}},
+}
 ```
 
 > **Abstract:**  
