@@ -3,12 +3,18 @@
 Please use the following citation:
 
 ```
-@misc{puzikov2018_e2e-nlg-challenge,
- author = {Puzikov, Yevgeniy and Gurevych, Iryna},
- title = {{E2E} {NLG} Challenge: Neural Networks Vs. Templates},
- howpublished = {{E2E} {NLG} Challenge System Descriptions},
- year = 2018,
- note = {\url{http://www.macs.hw.ac.uk/InteractionLab/E2E/#papers}},
+@inproceedings{puzikov-gurevych-2018-e2e,
+    title = "{E}2{E} {NLG} Challenge: Neural Models vs. Templates",
+    author = "Puzikov, Yevgeniy  and Gurevych, Iryna",
+    booktitle = "Proceedings of the 11th International Conference on Natural Language Generation",
+    month = nov,
+    year = "2018",
+    address = "Tilburg University, The Netherlands",
+    publisher = "Association for Computational Linguistics",
+    url = "https://www.aclweb.org/anthology/W18-6557",
+    doi = "10.18653/v1/W18-6557",
+    pages = "463--471",
+    abstract = "E2E NLG Challenge is a shared task on generating restaurant descriptions from sets of key-value pairs. This paper describes the results of our participation in the challenge. We develop a simple, yet effective neural encoder-decoder model which produces fluent restaurant descriptions and outperforms a strong baseline. We further analyze the data provided by the organizers and conclude that the task can also be approached with a template-based model developed in just a few hours.",
 }
 ```
 
