@@ -84,21 +84,24 @@ class E2EMLPData(BaseDataClass):
         logger.debug("Skipped %d long sentences" % skipped_cnt)
         return (data_split_x, data_split_y)
 
-    def data_to_token_ids_test(self, raw_x):
-        assert self.max_src_len is not None
+    def data_to_token_ids_test(self, raw_x, raw_y=None):
+
+        if raw_y is None:
+            data_split_x = [[self.vocab.get_word(tok) for tok in x] for x in raw_x]
+            return (data_split_x, None)
+
         data_split_x = []
+        data_split_y = []
+
         for idx, x in enumerate(raw_x):
             src_ids = [self.vocab.get_word(tok) for tok in x]
-            src_size = len(src_ids)
-
-            # Truncating long sentences
-            if src_size > self.max_src_len:
-                logger.debug("Truncating long snt: %d" % idx)
-                continue
+            y = raw_y[idx]
+            tgt_ids = [self.vocab.get_word(tok) for tok in y]
 
             data_split_x.append(src_ids)
+            data_split_y.append(tgt_ids)
 
-        return (data_split_x, None)
+        return (data_split_x, data_split_y)
 
     def index_data(self, data_size, mode="no_shuffling"):
         """

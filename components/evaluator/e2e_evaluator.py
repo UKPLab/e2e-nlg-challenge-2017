@@ -75,7 +75,7 @@ class BaseEvaluator(object):
 
             for t in snt_ids[:-1]:  # excluding </s>
 
-                tok = id2word[t]
+                tok = id2word[t.item()]
 
                 if tok == NAME_TOKEN:
                     l = this_snt_lex[0]

@@ -4,7 +4,7 @@ import re
 
 from components.constants import MR_FIELDS, NAME_TOKEN, NEAR_TOKEN
 from components.data.vocabulary import VocabularyShared
-
+from pathlib import Path
 logger = logging.getLogger('experiment')
 
 # Regular expressions used to tokenize strings.
@@ -73,7 +73,7 @@ class BaseDataClass(object):
             self.fnames['train'] = train_data_fname
 
         if dev_x_raw is not None:
-            self.dev = self.data_to_token_ids_train(dev_x_raw, dev_y_raw)
+            self.dev = self.data_to_token_ids_test(dev_x_raw, dev_y_raw)
             self.fnames['dev'] = dev_data_fname
 
         if test_x_raw is not None:

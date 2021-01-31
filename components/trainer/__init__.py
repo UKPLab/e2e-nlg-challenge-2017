@@ -15,7 +15,7 @@ from components.utils.serialization import save_model, save_scores
 from components.utils.serialization import save_predictions_txt
 from components.utils.timing import create_progress_bar, asMinutes
 from components.utils.visualize import torch_summarize
-
+from pathlib import Path
 logger = logging.getLogger('experiment')
 
 
@@ -141,7 +141,7 @@ class BaseTrainer(object):
 
         for batch_idx in bar(range(num_dev_batches)):
             loss_var = self.train_step(model, dev_batches[batch_idx])
-            loss_data = loss_var.data[0]
+            loss_data = loss_var.item()
 
             # Record loss
             running_losses = ([loss_data] + running_losses)[:20]
@@ -164,7 +164,7 @@ class BaseTrainer(object):
         for pair_idx in bar(range(num_train_batches)):
             self.optimizer.zero_grad()
             loss_var = self.train_step(model, train_batches[pair_idx])
-            loss_data = loss_var.data[0]
+            loss_data = loss_var.item()
             loss_var.backward()  # compute gradients
             self.optimizer.step()  # update weights
 
