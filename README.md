@@ -65,19 +65,21 @@ The repository contains code for an MLP-based encoder-decoder model and a templa
 ## Requirements
 
 * 64-bit Linux versions
-* Python 3 and dependencies:
-    * PyTorch v0.2.0
-    * Progressbar2 v3.18.1
-* Python 2
+* Python 3 and dependencies in the environment.yaml file
 
 ## Installation
 
 * Install Python3 dependencies:
 
-```
-$ conda install pytorch torchvision cuda80 -c soumith 
-$ conda install progressbar2
-```
+  ```
+  $ conda env create -f environment.yaml
+  ```
+  This will create an Anaconda environment `e2e`. To activate this environment,
+run:
+
+  ```
+  $ conda activate e2e
+  ```
 
 * Python2 dependencies are needed only to run the official evaluation scripts.
 See installation instructions [here][3].
