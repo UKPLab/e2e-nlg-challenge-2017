@@ -4,7 +4,6 @@ import re
 
 from components.constants import MR_FIELDS, NAME_TOKEN, NEAR_TOKEN
 from components.data.vocabulary import VocabularyShared
-from pathlib import Path
 logger = logging.getLogger('experiment')
 
 # Regular expressions used to tokenize strings.

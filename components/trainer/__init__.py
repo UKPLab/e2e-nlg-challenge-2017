@@ -15,7 +15,6 @@ from components.utils.serialization import save_model, save_scores
 from components.utils.serialization import save_predictions_txt
 from components.utils.timing import create_progress_bar, asMinutes
 from components.utils.visualize import torch_summarize
-from pathlib import Path
 logger = logging.getLogger('experiment')
 
 
